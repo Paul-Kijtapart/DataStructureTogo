@@ -31,6 +31,22 @@ public class Graph<T> {
         return res;
     }
 
+    public boolean isEmpty() {
+        return nodeList.isEmpty();
+    }
+
+    public List<Node> getNodeList() {
+        return nodeList;
+    }
+
+    public boolean contains(Node<T> node) {
+        return this.nodeMap.containsKey(node.value);
+    }
+
+    public boolean contains(T value) {
+        return this.nodeMap.containsKey(value);
+    }
+
 
     public static <T> Graph buildGraph(
             T[] values,
@@ -92,7 +108,7 @@ public class Graph<T> {
         return sb.toString();
     }
 
-    class Node<T> {
+    public class Node<T> {
         private T value;
         private Map<T, WeightedEdge<T>> childMap;
         private int dependencies;
@@ -118,6 +134,14 @@ public class Graph<T> {
             to.incrementDependencies();
         }// close addChild
 
+        public T getValue() {
+            return value;
+        }
+
+        public Map<T, WeightedEdge<T>> getChildMap() {
+            return childMap;
+        }
+
         @Override
         public String toString() {
             return "Node{" +
@@ -128,7 +152,7 @@ public class Graph<T> {
     } // close inner class Node
 
 
-    class WeightedEdge<T> {
+    public class WeightedEdge<T> {
         int cost;
         Node<T> destinationNode;
 
