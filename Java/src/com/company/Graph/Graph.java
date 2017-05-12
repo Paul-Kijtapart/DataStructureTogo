@@ -79,9 +79,17 @@ public class Graph<T> {
 
     @Override
     public String toString() {
-        return "Graph{" +
-                "nodeList=" + nodeList +
-                '}';
+
+        StringBuilder sb = new StringBuilder();
+        sb.append("{\n");
+
+        for (Node n : nodeList) {
+            sb.append(" " + n + "\n");
+        }
+
+        sb.append("\n}\n");
+
+        return sb.toString();
     }
 
     class Node<T> {
@@ -112,9 +120,10 @@ public class Graph<T> {
 
         @Override
         public String toString() {
-            return "{" +
+            return "Node{" +
                     "value=" + value +
-                    "} \n";
+                    ", childMap=" + childMap +
+                    '}';
         }
     } // close inner class Node
 
@@ -130,9 +139,8 @@ public class Graph<T> {
 
         @Override
         public String toString() {
-            return "WeightedEdge{" +
+            return "{" +
                     "cost=" + cost +
-                    ", destNode=" + destinationNode +
                     '}';
         }
     } // close inner class WeightedEdge
